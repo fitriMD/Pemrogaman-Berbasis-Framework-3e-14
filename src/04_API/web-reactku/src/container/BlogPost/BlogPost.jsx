@@ -7,7 +7,7 @@ class BlogPost extends Component {
         listArtikel: []     //variabel array yang digunakan untuk menyimpan data API
     }
 
-    componentDidMount() {      //komponen untuk mengecek ketika component telah di-mount-ing, maka panggil API
+    ambilDataDariServerAPI() {
         fetch('http://localhost:3001/posts') //alamat URL API yang ingin kita ambil datanya
             .then(response => response.json())      //ubah response data dari URL API menjadi sebuah data json
             .then(jsonHasilAmbilDariAPI => {        //data json hasil ambil dari API kita masukkan ke dalam listArtikel pada state
@@ -17,6 +17,16 @@ class BlogPost extends Component {
             })
 
     }
+    componentDidMount() {           //komponen untuk mengecek ketika component telah telah di-mount-ing, maka panggil API
+        this.ambilDataDariServerAPI()   //ambil dari data server API lokal
+    }
+
+    handleHapusArtikel = (data) => {            //fungsi yang meng-handle button action hapus data
+        fetch(`http://localhost:3001/posts/${data}`, { method: 'DELETE' })  //alamat URL API yang ingin kita HAPUS datanya
+            .then(res => {      //ketika proses hapus berhasil, maka ambil data dari server API lokal
+                this.ambilDataDariServerAPI()
+            })
+    }
 
     render() {
         return (
@@ -24,7 +34,7 @@ class BlogPost extends Component {
                 <h2>Daftar Artikel</h2>
                 {
                     this.state.listArtikel.map(artikel => { //looping dan masukkan untuk setiap data yang ada di listArtikel ke variabel artikel
-                        return <Post key={artikel.id} judul={artikel.title} isi={artikel.body} />     //mapping data json dari API sesuai dengan kategorinya
+                        return <Post key={artikel.id} judul={artikel.title} isi={artikel.body} idArtikel={artikel.id} hapusArtikel={this.handleHapusArtikel} />     //mapping data json dari API sesuai dengan kategorinya
                     })
                 }
             </div>
