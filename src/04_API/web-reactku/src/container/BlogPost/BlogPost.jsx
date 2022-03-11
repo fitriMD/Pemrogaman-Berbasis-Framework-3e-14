@@ -8,7 +8,7 @@ class BlogPost extends Component {
     }
 
     componentDidMount() {      //komponen untuk mengecek ketika component telah di-mount-ing, maka panggil API
-        fetch('https://jsonplaceholder.typicode.com/posts') //alamat URL API yang ingin kita ambil datanya
+        fetch('http://localhost:3001/posts') //alamat URL API yang ingin kita ambil datanya
             .then(response => response.json())      //ubah response data dari URL API menjadi sebuah data json
             .then(jsonHasilAmbilDariAPI => {        //data json hasil ambil dari API kita masukkan ke dalam listArtikel pada state
                 this.setState({
