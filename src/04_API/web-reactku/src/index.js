@@ -10,8 +10,11 @@ import './index.css';
 // import Register from './Register';
 
 import BlogPost from "./container/BlogPost/BlogPost";
+import Mhs from "./container/Mahasiswa/Mhs";
 
-ReactDOM.render(<BlogPost />, document.getElementById('content'));
+ReactDOM.render(<Mhs />, document.getElementById('content'));
+
+// ReactDOM.render(<BlogPost />, document.getElementById('content'));
 
 
 // const HelloComponent = () =>{
