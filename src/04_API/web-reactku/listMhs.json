@@ -15,6 +15,24 @@
       "hp": "081802023523",
       "angkatan": 2014,
       "status": "lulus"
+    },
+    {
+      "id": 1647352386603,
+      "nim": "1941720016",
+      "nama": "Fitri",
+      "alamat": "DSN.TANJUNG RT.020/RW.006 DS.WATES TANJUNG",
+      "hp": "086745367289",
+      "angkatan": "2019",
+      "status": "aktif"
+    },
+    {
+      "id": 1647393769893,
+      "nim": "12345",
+      "nama": "Fathan Rizqy Hidayat",
+      "alamat": "Gresik",
+      "hp": "2345678",
+      "angkatan": "20",
+      "status": "aktif"
     }
   ]
 }
