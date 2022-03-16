@@ -4,47 +4,92 @@ import {
   Switch,
   Route,
   Link,
-  useParams
+  useParams,
+  useRouteMatch
 }
   from "react-router-dom";
 
-//params adalah placeholder di URL yang dimulai dengan titik dua,
-// seperti param ': id' yang didefinisikan dalam route dalam contoh ini.
+//karena route adalah komponen reguler react,
+//sehingga dapat ditampilkan di mana saja dalam penempatannya,
+//termasuk dalam child element,
 
-export default function ParamsExample() {
+//Ini akan membantu anda untuk memecah menjadi beberapa bundel
+//karena pemisah kode pada aplikasi react router sama dengan
+//pemecahan kode pada aplikasi react lainnya.
+
+export default function NestingExample() {
   return (
     <Router>
       <div>
-        <h2>Accounts</h2>
         <ul>
           <li>
-            <Link to="/netflix">Netflix</Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/gmail">Gmail</Link>
-          </li>
-          <li>
-            <Link to="/yahoo">Yahoo</Link>
-          </li>
-          <li>
-            <Link to="/amazon">Amazon</Link>
+            <Link to="/topics">Topics</Link>
           </li>
         </ul>
         <hr />
+
         <Switch>
-          <Route path="/:id" children={<Child />}/>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/topics">
+            <Topics />
+          </Route>
         </Switch>
       </div>
     </Router>
   );
 }
 
-function Child() {
-  let { id } = useParams();
+function Home() {
+  return (
+    <div>
+      <h2>Home</h2>
+    </div>
+  );
+}
+
+function Topics() {
+  //'path' untuk membuat jalur <Route> yang terhadap rute induk,
+  //sedangkan 'url' untuk membuat link.
+
+  let { path, url } = useRouteMatch();
+  return (
+    <div>
+      <h2>Topics</h2>
+      <ul>
+        <li>
+          <Link to={`${url}/Sate, Nasi Goreng`}>Kuliner</Link>
+        </li>
+        <li>
+          <Link to={`${url}/Wisata alam, Museum`}>Travelling</Link>
+        </li>
+        <li>
+          <Link to={`${url}/Ibis, JW Marriot`}>Raview Hotel</Link>
+        </li>
+      </ul>
+
+      <Switch>
+        <Route exact path={path}>
+          <h3>Please select a topic.</h3>
+        </Route>
+        <Route path={`${path}/:topicId`}>
+          <Topic />
+        </Route>
+      </Switch>
+    </div>
+  );
+}
+
+function Topic() {
+  let { topicId } = useParams();
 
   return (
     <div>
-      <h3>ID: {id}</h3>
+      <h3>{topicId}</h3>
     </div>
   );
 }
