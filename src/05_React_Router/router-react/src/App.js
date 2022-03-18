@@ -24,7 +24,9 @@ export default function AuthExample() {
   return (
     <Router>
       <div>
-        <AuthButton />
+        <Switch>
+          <AuthButton />
+        </Switch>
         <ul>
           <li>
             <Link to="/public">Public Page</Link>
