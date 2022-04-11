@@ -1,13 +1,13 @@
 const domainPath = 'http://localhost:3001';
 const GetAPI = (path) => {
-    const promise = new Promise ((resolve, reject) => {
+    const promise = new Promise((resolve, reject) => {
         fetch(`${domainPath}/${path}`)
-        .then(response => response.json())
-        .then((result) => {
-            resolve(result);
-        }, (err) => {
-            reject(err);
-        })
+            .then(response => response.json())
+            .then((result) => {
+                resolve(result);
+            }, (err) => {
+                reject(err);
+            })
     })
     return promise;
 }
@@ -32,12 +32,24 @@ const PostAPI = (path, data) => {
     return promise;
 }
 
+const DeleteAPI = (path, data) => {
+    const promise = new Promise((resolve, reject) => {
+        fetch(`${domainPath}/${path}/${data}`, {method: 'DELETE'})
+            .then((result) => {
+                resolve(result);
+            }, (err) => {
+                reject(err);
+            })
+    })
+}
 const getNewsBlog = () => GetAPI('posts?_sort=id&_order=desc');
-const postNewsBlog = (dataYgDikirim) => PostAPI('posts', dataYgDikirim);
+const postNewsBlog = (dataYgDiKirim) => PostAPI('posts', dataYgDiKirim);
+const deleteNewsBlog = (dataYgDiHapus) => DeleteAPI('post', dataYgDiHapus);
 
 const API = {
     getNewsBlog,
-    postNewsBlog
+    postNewsBlog,
+    deleteNewsBlog
 }
 
 export default API;
