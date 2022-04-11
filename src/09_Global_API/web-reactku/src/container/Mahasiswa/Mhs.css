@@ -1,0 +1,48 @@
+.mhs {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid blue;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+    display: flex;
+}
+.daftar-mhs {
+    flex: 1;
+}
+
+.daftar-mhs div.data-mhs {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.daftar-mhs p.nim-mhs {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.daftar-mhs p.nama-mhs {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.daftar-mhs p.alamat-mhs {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.daftar-mhs p.hp-mhs {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.daftar-mhs p.angkatan-mhs {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.daftar-mhs p.status-mhs {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
