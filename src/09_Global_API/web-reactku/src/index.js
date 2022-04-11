@@ -12,9 +12,9 @@ import './index.css';
 import BlogPost from "./container/BlogPost/BlogPost";
 import Mhs from "./container/Mahasiswa/Mhs";
 
-ReactDOM.render(<Mhs />, document.getElementById('content'));
+// ReactDOM.render(<Mhs />, document.getElementById('content'));
 
-// ReactDOM.render(<BlogPost />, document.getElementById('content'));
+ReactDOM.render(<BlogPost />, document.getElementById('content'));
 
 
 // const HelloComponent = () =>{
