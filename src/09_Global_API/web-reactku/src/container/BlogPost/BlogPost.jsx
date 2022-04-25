@@ -26,11 +26,11 @@ class BlogPost extends Component {
         this.ambilDataDariServerAPI()   //ambil dari data server API lokal
     }
 
-    handleHapusArtikel = (data) => {        // Fungsi yang meng-handle button action hapus data
+    handleHapusArtikel = (data) => {
         API.deleteNewsBlog(data).then((response) => {
-            this.ambilDataDariSeverAPI();
-          });
-    }
+          this.ambilDataDariSeverAPI();
+        });
+      };
     
     handleTambahArtikel = (event) => {      //fungsi untuk meng-handle form tambah data artikel
         let formInsertArtikel = { ...this.state.insertArtikel };        //clonning data state insertArtikel ke dalam variabel formInsertArtikel

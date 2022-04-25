@@ -10,7 +10,7 @@ const getNewsBlog = () => GetAPI('posts?_sort=id&_order=desc');
 const postNewsBlog = (dataYgDiKirim) => PostAPI('posts', dataYgDiKirim);
 
 //Daftar API - DELETE
-const deleteNewsBlog = (dataYgDiHapus) => DeleteAPI('post', dataYgDiHapus);
+const deleteNewsBlog = (dataYgDiHapus) => DeleteAPI('posts', dataYgDiHapus);
 
 const API = {
     getNewsBlog,
