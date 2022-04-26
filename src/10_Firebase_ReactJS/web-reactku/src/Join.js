@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { AuthContext } from "./index";
 import firebase from 'firebase/app';
 import auth from 'firebase/auth';
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 // import * as firebase from "firebase";
 
 const Join = () => {
@@ -9,12 +10,27 @@ const Join = () => {
     const [password, setPassword] = useState("");
     const [error, setErrors] = useState("");
 
+    const googleProvider = new firebase.auth.GoogleAuthProvider();
+
     const Auth = useContext(AuthContext);
     const handleForm = e => {
         e.preventDefault();
         firebase
             .auth()
             .createUserWithEmailAndPassword(email, password)
+            .then(res => {
+                if (res.user) Auth.setLoggedIn(true);
+            })
+            .catch(e => {
+                setErrors(e.message);
+            })
+    };
+    // Sign In With Google 
+    const handleLoginGoogle = e => {
+        e.preventDefault();
+        firebase
+            .auth()
+            .signInWithPopup(googleProvider)
             .then(res => {
                 if (res.user) Auth.setLoggedIn(true);
             })
@@ -42,7 +58,7 @@ const Join = () => {
                     placeholder="password"
                 />
                 <hr />
-                <button class="googleBtn" type="button">
+                <button className="googleBtn" type="button" onClick={e=>handleLoginGoogle(e)}>
                     <img
                         src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
                         alt="logo"
