@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
 import { AuthContext } from "./index";
+import firebase from 'firebase/app';
+import auth from 'firebase/auth';
 // import * as firebase from "firebase";
-import firebase from "firebase/app";
 
 const Join = () => {
     const [email, setEmail] = useState("");
@@ -19,15 +20,13 @@ const Join = () => {
             })
             .catch(e => {
                 setErrors(e.message);
-            });
-        // console.log(Auth);
-        // Auth.setLoggedIn(true);
+            })
     };
 
     return (
         <div>
             <h1>Join</h1>
-            <form onSubmit={e => handleForm()}>
+            <form onSubmit={e => handleForm(e)}>
                 <input
                     value={email}
                     onChange={e => setEmail(e.target.value)}
