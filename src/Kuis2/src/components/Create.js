@@ -40,7 +40,7 @@ class Create extends Component {
         tahunangkatan: '',
         status: ''
       });
-      this.props.history.push("/")
+      this.props.history.push("/home")
     })
     .catch((error) => {
       console.error("Error adding document: ", error);
@@ -58,7 +58,7 @@ class Create extends Component {
             </h3>
           </div>
           <div class="panel-body">
-            <h4><Link to="/" class="btn btn-primary">Mahasiswa List | Create</Link></h4>
+            <h4><Link to="/home" class="btn btn-primary">Mahasiswa List | Create</Link></h4>
             <form onSubmit={this.onSubmit}>
               <div class="form-group">
                 <label for="nim">NIM:</label>

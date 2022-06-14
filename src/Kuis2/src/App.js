@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, Container, Paper } from '@material-ui/core'
 import { Link } from 'react-router-dom';
 import './App.css';
 import firebase from './Firebase';
@@ -35,6 +36,10 @@ class App extends Component {
   componentDidMount() {
     this.unsubscribe = this.ref.onSnapshot(this.onCollectionUpdate);
   }
+  handleLogOut = () =>{
+    this.handleLogOut = this.ref.signOut()
+    // firebase.auth().signOut()
+}
 
   render() {
     return (
@@ -69,6 +74,8 @@ class App extends Component {
                 )}
               </tbody>
             </table>
+            
+            <button><Link to="/">Log Out</Link></button>
           </div>
         </div>
       </div>

@@ -60,7 +60,7 @@ class Edit extends Component {
         tahunangkatan: '',
         status: ''
       });
-      this.props.history.push("/show/"+this.props.match.params.id)
+      this.props.history.push("/home")
     })
     .catch((error) => {
       console.error("Error adding document: ", error);
